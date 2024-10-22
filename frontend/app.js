@@ -12,6 +12,8 @@ class screenState {
   }
 }
 
+const ascii = document.querySelector("#ascii-art");
+const jobTitle = document.querySelector("#job-title");
 const displayArea = document.querySelector('#display-area');
 const contentSpace = document.createElement("p");
 const title = document.createElement("h1");
@@ -44,11 +46,15 @@ displayArea.appendChild(title);
 displayArea.appendChild(contentSpace);
 displayArea.appendChild(github);
 
+ascii.classList.add('hide');
+jobTitle.classList.add('hide');
 title.classList.add('title');
 displayArea.classList.add('text-container');
 contentSpace.classList.add('text');
 github.classList.add('hide');
 
+ascii.classList.toggle('hide');
+jobTitle.classList.toggle('hide');
 displayArea.classList.toggle('text-container');
 contentSpace.classList.toggle('text');
 
@@ -73,6 +79,8 @@ window.addEventListener('keydown', (e) => {
 
       if(home){
         home = false;
+        ascii.classList.toggle('hide');
+        jobTitle.classList.toggle('hide');
         displayArea.classList.toggle('text-container');
         contentSpace.classList.toggle('text');
       }
@@ -94,6 +102,8 @@ window.addEventListener('keydown', (e) => {
 
       if(home){
         home = false;
+        ascii.classList.toggle('hide');
+        jobTitle.classList.toggle('hide');
         displayArea.classList.toggle('text-container');
         contentSpace.classList.toggle('text');
       }
@@ -115,6 +125,8 @@ window.addEventListener('keydown', (e) => {
 
       if(!home){
         home = true;
+        ascii.classList.toggle('hide');
+        jobTitle.classList.toggle('hide');
         displayArea.classList.toggle('text-container');
         contentSpace.classList.toggle('text');
       }
@@ -180,6 +192,12 @@ window.addEventListener('keydown', (e) => {
           contentSpace.textContent = currentScreen.displayText;
           github.setAttribute('href', currentScreen.github_address);
         }
+      }
+    } break;
+
+    case "g": {
+      if(browsingProjects) {
+        window.open(currentScreen.github_address);
       }
     } break;
   }
