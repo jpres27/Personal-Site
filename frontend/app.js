@@ -58,7 +58,6 @@ jobTitle.classList.toggle('hide');
 displayArea.classList.toggle('text-container');
 contentSpace.classList.toggle('text');
 
-// TODO: See if its possible to open the Github on keypress
 window.addEventListener('keydown', (e) => {
   switch (e.key) {
 
