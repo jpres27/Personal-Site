@@ -7,100 +7,57 @@ html {
     font-family: 'DOS-V';
   }
 
-  header {
-    background-color: #0100AB;
-    color: #DFFFFF;
-    text-align: center;
-    height: 40vh;
-    width: 80vw;
-    margin: 0;
-  }
-
   .ascii-art {
     font-family: monospace;
     white-space: pre;
     color: #D63743;
+    text-align: center;
 }
 
   body {
-    height: 100vh;
-    width: 90vw;
-    margin: 0;
-    min-width: 100%;
-    border-left: none;
-    border-right: none;
     background-color: #0100AB;
     color: #EAE740;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    justify-content: space-around;
-    gap: 10px;
-    flex-wrap: nowrap;
-  }
-
-  section {
-    display: flex;
-    flex: 38%;
-    gap: 20px;
-    justify-content: center;
-    align-items: center;
-    background-color: #0100AB;
-    padding: 10%;
-    min-height: 60%;
-    width: clamp(45ch, 50%, 75ch);
+    height: 100vh;
     text-align: center;
-    word-break: break-word;
-    /*border-style: double;
+    align-content: center;
+    display: grid;
+    grid-template-columns: 1fr;
+    place-items: center;
+  }
+
+  .text-container {
+    background-color: #AAAAAA;
+    margin-top: 3%;
+    border-style: double;
     border-color: white;
-    border-width: 4px;*/
+    border-width: 3px;
+    max-width: 75vw;
   }
 
-  /*
-  border-inline-start: 4px solid;
-  border-block-start: 4px solid;
-  padding: 10px;
-  border-image-source: radial-gradient(circle at top left, limegreen, transparent 50%);
-  border-image-slice: 1;
-  */
-
-  a {
-    color: white;
+  .text-container > * {
+    display: flex;
+    justify-content: center;
   }
+
 
   .text {
-    border-inline-start: 4px solid;
-    border-block-start: 4px solid;
-    padding: 10px;
-    border-image-source: radial-gradient(circle at top left, #D63743, transparent 50%);
-    border-image-slice: 1;
-    background-color: #0100AB;
-    min-width: 40%;
+    text-align: left;
+    text-justify: left;
+    padding: 1em 1em;
+    color: black;
+    background-color: #00AAA9;
   }
 
-  img {
+  .hide {
+    visibility: hidden;
+  }
+
+  .title {
+    color: black;
+  }
+
+  .img {
     width: 100%;
     height: auto;
     max-width: 30vw;
-  }
-
-  @media(prefers-reduced-motion){
-    .hidden {
-      transition: none;
-    }
-  }
-
-  .hidden {
-    opacity: 0;
-    filter: blur(5px);
-    transform: translateX(-100%);
-    transition: all 1s;
-
-  }
-
-  .show {
-    opacity: 1;
-    filter: blur(0);
-    transform: translateX(0);
   }
