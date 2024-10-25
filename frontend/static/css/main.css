@@ -1,22 +1,23 @@
 @font-face {
   font-family: 'DOS-V';
-  src: url('data/fonts/DOS-V-ANK16.woff');
+  src: url('../fonts/DOS-V-ANK16.woff');
 }
-
-html {
-    font-family: 'DOS-V';
-  }
 
   #ascii-art {
     font-family: monospace;
     white-space: pre;
     color: #D63743;
     text-align: center;
-}
+  }
+
+  .job-title {
+  font-family: 'DOS-V';
+  }
 
   body {
     background-color: #0100AB;
     color: #EAE740;
+    font-family: 'DOS-V';
     height: 100vh;
     text-align: center;
     align-content: center;
