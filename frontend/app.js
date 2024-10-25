@@ -17,15 +17,15 @@ const jobTitle = document.querySelector("#job-title");
 const displayArea = document.querySelector('#display-area');
 const contentSpace = document.createElement("p");
 const title = document.createElement("h1");
-const github = document.createElement("a");
+// const github = document.createElement("a");
 
 let projectsHub = false;
 let browsingProjects = false; 
 let projectIndex = 0;
 let home = true;
 
-const homeScreen = new screenState("", "Press P for Projects | Press B for Bio | Press H to return to Home | Use arrow keys to navigate projects", "");
-const projectHome = new screenState("Projects", "Use the right and left arrow keys to navigate the projects. Press G to view a project's Github page or click the link.", "")
+const homeScreen = new screenState("", "Press P for PROJECTS | Press B for BIO | Press H to return HOME", "");
+const projectHome = new screenState("Projects", "Use the right and left arrow keys to navigate the projects. Press G to view a project's Github page.", "")
 const project1Screen = new screenState("The Isles", "A prototype stage first-person RPG written from scratch in C++. Real time 3D rendering using D3D11, audio using WASAPI.", "https://github.com/jpres27/learn_d3d11");
 const project2Screen = new screenState("The Libra Project", "Contributed audit querying functionality designed to work with AWS Lambda to the Libra redesign project at the University of Virginia Library. Libra is a scholarly repository.", "https://github.com/uvalib/libra-lambda/tree/main/libra-audit-query");
 const project3Screen = new screenState("8086 Instruction Decoder", "Decodes 8086 machine instructions and provides a valid 8086 assembly output file. The output can be fed to an assembler and produce identical machine code. This was created as part of Casey Muratori's Performance Aware Programming course and involved many hours of nostalgic consultation of Intel's 8086 Family manual.", "https://github.com/jpres27/8086-Instruction-Decoder");
@@ -40,18 +40,18 @@ let currentScreen = screens[0];
 
 title.textContent = currentScreen.title;
 contentSpace.textContent = currentScreen.displayText;
-github.innerHTML = "GITHUB"
+// github.innerHTML = "GITHUB"
 
 displayArea.appendChild(title);
 displayArea.appendChild(contentSpace);
-displayArea.appendChild(github);
+// displayArea.appendChild(github);
 
 ascii.classList.add('hide');
 jobTitle.classList.add('hide');
 title.classList.add('title');
 displayArea.classList.add('text-container');
 contentSpace.classList.add('text');
-github.classList.add('hide');
+// github.classList.add('hide');
 
 ascii.classList.toggle('hide');
 jobTitle.classList.toggle('hide');
@@ -65,11 +65,10 @@ window.addEventListener('keydown', (e) => {
       currentScreen = screens[1];
       title.textContent = currentScreen.title;
       contentSpace.textContent = currentScreen.displayText;
-      github.setAttribute('href', currentScreen.github_address);
 
       if(browsingProjects) {
         browsingProjects = false;
-        github.classList.toggle('hide');
+        // github.classList.toggle('hide');
       }
 
       if(!projectsHub) {
@@ -96,7 +95,7 @@ window.addEventListener('keydown', (e) => {
 
       if(browsingProjects) {
         browsingProjects = false;
-        github.classList.toggle('hide');
+        // github.classList.toggle('hide');
       }
 
       if(home){
@@ -119,7 +118,7 @@ window.addEventListener('keydown', (e) => {
 
       if(browsingProjects) {
         browsingProjects = false;
-        github.classList.toggle('hide');
+        // github.classList.toggle('hide');
       }
 
       if(!home){
@@ -135,12 +134,12 @@ window.addEventListener('keydown', (e) => {
       if(projectsHub) {
         projectsHub = false;
         browsingProjects = true;
-        github.classList.toggle('hide');
+        // github.classList.toggle('hide');
         projectIndex = 0;
         currentScreen = projectScreens[projectIndex];
         title.textContent = currentScreen.title;
         contentSpace.textContent = currentScreen.displayText;
-        github.setAttribute('href', currentScreen.github_address);
+        // github.setAttribute('href', currentScreen.github_address);
       }
 
       else if(browsingProjects) {
@@ -149,7 +148,7 @@ window.addEventListener('keydown', (e) => {
           currentScreen = projectScreens[projectIndex];
           title.textContent = currentScreen.title;
           contentSpace.textContent = currentScreen.displayText;
-          github.setAttribute('href', currentScreen.github_address);
+          // github.setAttribute('href', currentScreen.github_address);
         }
 
         else if(projectIndex < 3) {
@@ -158,7 +157,7 @@ window.addEventListener('keydown', (e) => {
           currentScreen = projectScreens[++projectIndex];
           title.textContent = currentScreen.title;
           contentSpace.textContent = currentScreen.displayText;
-          github.setAttribute('href', currentScreen.github_address);
+          // github.setAttribute('href', currentScreen.github_address);
         }
       }
     } break;
@@ -172,7 +171,7 @@ window.addEventListener('keydown', (e) => {
         currentScreen = projectScreens[projectIndex];
         title.textContent = currentScreen.title;
         contentSpace.textContent = currentScreen.displayText;
-        github.setAttribute('href', currentScreen.github_address);
+        // github.setAttribute('href', currentScreen.github_address);
       }
 
       else if(browsingProjects) {
@@ -181,7 +180,7 @@ window.addEventListener('keydown', (e) => {
           currentScreen = projectScreens[projectIndex];
           title.textContent = currentScreen.title;
           contentSpace.textContent = currentScreen.displayText;
-          github.setAttribute('href', currentScreen.github_address);
+          // github.setAttribute('href', currentScreen.github_address);
         }
 
         else if(projectIndex > 0) {
@@ -189,7 +188,7 @@ window.addEventListener('keydown', (e) => {
           currentScreen = projectScreens[--projectIndex];
           title.textContent = currentScreen.title;
           contentSpace.textContent = currentScreen.displayText;
-          github.setAttribute('href', currentScreen.github_address);
+          // github.setAttribute('href', currentScreen.github_address);
         }
       }
     } break;
