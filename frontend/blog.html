@@ -1,0 +1,26 @@
+{{define "main"}}
+    <div class='blog-post'>
+        <div class="page-header">
+            <h1>BLOG</h1>
+        </div>
+    {{if .Posts}}
+    <div class="wrapper">
+        <table>
+            <caption>LATEST POSTS</caption>
+            <tr>
+                <th>Title</th>
+                <th>Posted</th>
+            </tr>
+            {{range .Posts}}
+            <tr>
+                <td><a href='/blog/{{.ID}}'>{{.Title}}</a></td>
+                <td>{{.Created}}</td>
+            </tr>
+            {{end}}
+        </table>
+    </div>
+    {{else}}
+        <p>There's nothing to see here... yet!</p>
+    {{end}}
+    </div>
+{{end}}

@@ -33,8 +33,24 @@ func (app *application) blog(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	for _, post := range posts {
-		fmt.Fprintf(w, "%+v", post)
+	files := []string{
+		"../frontend/base.html",
+		"../frontend/blog.html",
+	}
+
+	ts, err := template.ParseFiles(files...)
+	if err != nil {
+		app.serverError(w, r, err)
+		return
+	}
+
+	data := templateData{
+		Posts: posts,
+	}
+
+	err = ts.ExecuteTemplate(w, "base", data)
+	if err != nil {
+		app.serverError(w, r, err)
 	}
 }
 
@@ -55,7 +71,25 @@ func (app *application) blogPost(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	fmt.Fprintf(w, "%+v", post)
+	files := []string{
+		"../frontend/base.html",
+		"../frontend/viewpost.html",
+	}
+
+	ts, err := template.ParseFiles(files...)
+	if err != nil {
+		app.serverError(w, r, err)
+		return
+	}
+
+	data := templateData{
+		Post: post,
+	}
+
+	err = ts.ExecuteTemplate(w, "base", data)
+	if err != nil {
+		app.serverError(w, r, err)
+	}
 }
 
 func (app *application) blogCreateForm(w http.ResponseWriter, r *http.Request) {
@@ -76,14 +110,67 @@ func (app *application) blogCreatePost(w http.ResponseWriter, r *http.Request) {
 }
 
 func (app *application) projectsHub(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("Projects!"))
+	projects, err := app.projects.Latest()
+	if err != nil {
+		app.serverError(w, r, err)
+		return
+	}
+
+	files := []string{
+		"../frontend/base.html",
+		"../frontend/projects-hub.html",
+	}
+
+	ts, err := template.ParseFiles(files...)
+	if err != nil {
+		app.serverError(w, r, err)
+		return
+	}
+
+	data := templateData{
+		Projects: projects,
+	}
+
+	err = ts.ExecuteTemplate(w, "base", data)
+	if err != nil {
+		app.serverError(w, r, err)
+	}
 }
 
 func (app *application) project(w http.ResponseWriter, r *http.Request) {
 	id, err := strconv.Atoi(r.PathValue("id"))
-	if err != nil || id < 1 || id > 8 {
+	if err != nil || id < 1 || id > 64 {
 		http.NotFound(w, r)
 		return
 	}
-	fmt.Fprintf(w, "Project ID: %d", id)
+
+	project, err := app.projects.Get(id)
+	if err != nil {
+		if errors.Is(err, ErrNoRecord) {
+			http.NotFound(w, r)
+		} else {
+			app.serverError(w, r, err)
+		}
+		return
+	}
+
+	files := []string{
+		"../frontend/base.html",
+		"../frontend/view-project.html",
+	}
+
+	ts, err := template.ParseFiles(files...)
+	if err != nil {
+		app.serverError(w, r, err)
+		return
+	}
+
+	data := templateData{
+		Project: project,
+	}
+
+	err = ts.ExecuteTemplate(w, "base", data)
+	if err != nil {
+		app.serverError(w, r, err)
+	}
 }

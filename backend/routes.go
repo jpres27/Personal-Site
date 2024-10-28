@@ -11,7 +11,7 @@ func (app *application) routes() *http.ServeMux {
 	mux.HandleFunc("GET /blog/{id}", app.blogPost)
 	mux.HandleFunc("GET /blog/create", app.blogCreateForm)
 	mux.HandleFunc("POST /blog/create", app.blogCreatePost)
-	mux.HandleFunc("GET /projects", app.projectsHub)
+	mux.HandleFunc("GET /projects/{$}", app.projectsHub)
 	mux.HandleFunc("GET /projects/{id}", app.project)
 
 	return mux

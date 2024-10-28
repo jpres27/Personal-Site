@@ -3,7 +3,48 @@
   src: url('../fonts/DOS-V-ANK16.woff');
 }
 
-  #ascii-art {
+  body {
+    background-color: #402C80;
+  }
+
+  a {
+    color: #F2F207;
+  }
+
+  .wrapper {
+    width: min(900px, 100% - 3rem);
+  }
+
+  caption {
+    background-color: #4F4F67;
+    color: #C3C5EC;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: black;
+    color: #00ED00;
+    border-style: solid;
+    border-color: #505068;
+    border-width: 3px;
+  }
+
+  th,
+  td,
+  caption {
+    padding: 1rem;
+    text-align: left;
+  }
+
+  th {
+    background-color: #5B5E7B;
+    color: #C3C5EC;
+  }
+
+  .ascii-art {
     font-family: monospace;
     white-space: pre;
     color: #D63743;
@@ -14,7 +55,13 @@
   font-family: 'DOS-V';
   }
 
-  body {
+  .page-header {
+    color: #D63743;
+    font-size: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .home {
     background-color: #0100AB;
     color: #EAE740;
     font-family: 'DOS-V';
@@ -26,11 +73,41 @@
     place-items: center;
   }
 
+  .home-links{
+    padding: 1rem;
+  }
+
+  .blog-title {
+    color: #B6B8DB;
+    padding: 1em;
+  }
+
+  .metadata {
+    color: #B6B8DB;
+    padding: 1em;
+  }
+
+  ::selection {
+    background-color: #A00050;
+  }
+
+  .blog-post {
+    font-family: 'DOS-V';
+    background-color: #2020A8;
+    height: 100vh;
+    text-align: center;
+    align-content: center;
+    display: grid;
+    grid-template-columns: 1fr;
+    place-items: center;
+  }
+
   .text-container {
-    background-color: #AAAAAA;
+    color: #00ED00;
+    background-color: black;
     margin-top: 3%;
-    border-style: double;
-    border-color: white;
+    border-style: solid;
+    border-color: #505068;
     border-width: 3px;
     max-width: 75vw;
   }
@@ -40,6 +117,17 @@
     justify-content: center;
   }
 
+  .blog-text {
+    color: #00ED00;
+    background-color: black;
+    text-align: left;
+    text-justify: left;
+    border-style: solid;
+    border-color: #505068;
+    border-width: 3px;
+    max-width: 75vw;
+    padding: 1em 1em;
+  }
 
   .text {
     text-align: left;
@@ -47,14 +135,6 @@
     padding: 1em 1em;
     color: black;
     background-color: #00AAA9;
-  }
-
-  .hide {
-    display: none;
-  }
-
-  .title {
-    color: black;
   }
 
   .img {
