@@ -5,25 +5,10 @@ import (
 	"fmt"
 	"net/http"
 	"strconv"
-	"text/template"
 )
 
 func (app *application) home(w http.ResponseWriter, r *http.Request) {
-	files := []string{
-		"../frontend/base.html",
-		"../frontend/home.html",
-	}
-
-	tmpl, err := template.ParseFiles(files...)
-	if err != nil {
-		app.serverError(w, r, err)
-		return
-	}
-
-	err = tmpl.ExecuteTemplate(w, "base", nil)
-	if err != nil {
-		app.serverError(w, r, err)
-	}
+	app.render(w, r, http.StatusOK, "home.html", templateData{})
 }
 
 func (app *application) blog(w http.ResponseWriter, r *http.Request) {
@@ -33,25 +18,11 @@ func (app *application) blog(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	files := []string{
-		"../frontend/base.html",
-		"../frontend/blog.html",
-	}
-
-	ts, err := template.ParseFiles(files...)
-	if err != nil {
-		app.serverError(w, r, err)
-		return
-	}
-
 	data := templateData{
 		Posts: posts,
 	}
 
-	err = ts.ExecuteTemplate(w, "base", data)
-	if err != nil {
-		app.serverError(w, r, err)
-	}
+	app.render(w, r, http.StatusOK, "blog.html", data)
 }
 
 func (app *application) blogPost(w http.ResponseWriter, r *http.Request) {
@@ -71,25 +42,11 @@ func (app *application) blogPost(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	files := []string{
-		"../frontend/base.html",
-		"../frontend/viewpost.html",
-	}
-
-	ts, err := template.ParseFiles(files...)
-	if err != nil {
-		app.serverError(w, r, err)
-		return
-	}
-
 	data := templateData{
 		Post: post,
 	}
 
-	err = ts.ExecuteTemplate(w, "base", data)
-	if err != nil {
-		app.serverError(w, r, err)
-	}
+	app.render(w, r, http.StatusOK, "view-post.html", data)
 }
 
 func (app *application) blogCreateForm(w http.ResponseWriter, r *http.Request) {
@@ -116,25 +73,11 @@ func (app *application) projectsHub(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	files := []string{
-		"../frontend/base.html",
-		"../frontend/projects-hub.html",
-	}
-
-	ts, err := template.ParseFiles(files...)
-	if err != nil {
-		app.serverError(w, r, err)
-		return
-	}
-
 	data := templateData{
 		Projects: projects,
 	}
 
-	err = ts.ExecuteTemplate(w, "base", data)
-	if err != nil {
-		app.serverError(w, r, err)
-	}
+	app.render(w, r, http.StatusOK, "projects-hub.html", data)
 }
 
 func (app *application) project(w http.ResponseWriter, r *http.Request) {
@@ -154,23 +97,9 @@ func (app *application) project(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	files := []string{
-		"../frontend/base.html",
-		"../frontend/view-project.html",
-	}
-
-	ts, err := template.ParseFiles(files...)
-	if err != nil {
-		app.serverError(w, r, err)
-		return
-	}
-
 	data := templateData{
 		Project: project,
 	}
 
-	err = ts.ExecuteTemplate(w, "base", data)
-	if err != nil {
-		app.serverError(w, r, err)
-	}
+	app.render(w, r, http.StatusOK, "view-project.html", data)
 }

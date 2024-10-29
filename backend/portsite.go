@@ -3,6 +3,7 @@ package main
 import (
 	"database/sql"
 	"flag"
+	"html/template"
 	"log/slog"
 	"net/http"
 	"os"
@@ -11,9 +12,10 @@ import (
 )
 
 type application struct {
-	logger   *slog.Logger
-	posts    *PostModel
-	projects *ProjectModel
+	logger        *slog.Logger
+	posts         *PostModel
+	projects      *ProjectModel
+	templateCache map[string]*template.Template
 }
 
 func openDB(dsn string) (*sql.DB, error) {
@@ -45,10 +47,18 @@ func main() {
 	}
 	defer db.Close()
 
+	// Initialize a new template cache...
+	templateCache, err := newTemplateCache()
+	if err != nil {
+		logger.Error(err.Error())
+		os.Exit(1)
+	}
+
 	app := &application{
-		logger:   logger,
-		posts:    &PostModel{DB: db},
-		projects: &ProjectModel{DB: db},
+		logger:        logger,
+		posts:         &PostModel{DB: db},
+		projects:      &ProjectModel{DB: db},
+		templateCache: templateCache,
 	}
 
 	logger.Info("starting server", slog.String("addr", ":3000"))

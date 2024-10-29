@@ -51,7 +51,7 @@ func (m *ProjectModel) Get(id int) (Project, error) {
 }
 
 func (m *ProjectModel) Latest() ([]Project, error) {
-	stmt := `SELECT title, description FROM projects ORDER BY id DESC LIMIT 10`
+	stmt := `SELECT id, title, description FROM projects ORDER BY id DESC LIMIT 10`
 	rows, err := m.DB.Query(stmt)
 	if err != nil {
 		return nil, err
@@ -63,7 +63,7 @@ func (m *ProjectModel) Latest() ([]Project, error) {
 
 	for rows.Next() {
 		var p Project
-		err = rows.Scan(&p.Title, &p.Description)
+		err = rows.Scan(&p.ID, &p.Title, &p.Description)
 		if err != nil {
 			return nil, err
 		}
