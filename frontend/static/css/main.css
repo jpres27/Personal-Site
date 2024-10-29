@@ -4,15 +4,23 @@
 }
 
   body {
-    background-color: #402C80;
+    font-family: 'DOS-V';
+    background-color: #2020A8;
+    height: 100vh;
+    text-align: center;
+    align-content: center;
+    display: grid;
+    grid-template-columns: 1fr;
+    place-items: center;
   }
 
   a {
+    font-family: 'DOS-V';
     color: #F2F207;
   }
 
   .wrapper {
-    width: min(900px, 100% - 3rem);
+    width: 100%;
   }
 
   caption {
@@ -52,25 +60,13 @@
   }
 
   .job-title {
-  font-family: 'DOS-V';
+    color: #EAE740;
   }
 
   .page-header {
     color: #D63743;
     font-size: 1.5rem;
     padding-bottom: 1.5rem;
-  }
-
-  .home {
-    background-color: #0100AB;
-    color: #EAE740;
-    font-family: 'DOS-V';
-    height: 100vh;
-    text-align: center;
-    align-content: center;
-    display: grid;
-    grid-template-columns: 1fr;
-    place-items: center;
   }
 
   .home-links{
@@ -89,17 +85,6 @@
 
   ::selection {
     background-color: #A00050;
-  }
-
-  .blog-post {
-    font-family: 'DOS-V';
-    background-color: #2020A8;
-    height: 100vh;
-    text-align: center;
-    align-content: center;
-    display: grid;
-    grid-template-columns: 1fr;
-    place-items: center;
   }
 
   .text-container {
