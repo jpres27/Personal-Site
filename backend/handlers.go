@@ -67,39 +67,13 @@ func (app *application) blogCreatePost(w http.ResponseWriter, r *http.Request) {
 }
 
 func (app *application) projectsHub(w http.ResponseWriter, r *http.Request) {
-	projects, err := app.projects.Latest()
-	if err != nil {
-		app.serverError(w, r, err)
-		return
-	}
-
-	data := templateData{
-		Projects: projects,
-	}
-
-	app.render(w, r, http.StatusOK, "projects-hub.html", data)
+	app.render(w, r, http.StatusOK, "projects-hub.html", templateData{})
 }
 
-func (app *application) project(w http.ResponseWriter, r *http.Request) {
-	id, err := strconv.Atoi(r.PathValue("id"))
-	if err != nil || id < 1 || id > 64 {
-		http.NotFound(w, r)
-		return
-	}
+func (app *application) raycasterIntro(w http.ResponseWriter, r *http.Request) {
+	app.render(w, r, http.StatusOK, "raycaster-intro.html", templateData{})
+}
 
-	project, err := app.projects.Get(id)
-	if err != nil {
-		if errors.Is(err, ErrNoRecord) {
-			http.NotFound(w, r)
-		} else {
-			app.serverError(w, r, err)
-		}
-		return
-	}
-
-	data := templateData{
-		Project: project,
-	}
-
-	app.render(w, r, http.StatusOK, "view-project.html", data)
+func (app *application) decoder(w http.ResponseWriter, r *http.Request) {
+	app.render(w, r, http.StatusOK, "decoder.html", templateData{})
 }

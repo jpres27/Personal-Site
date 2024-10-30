@@ -14,7 +14,6 @@ import (
 type application struct {
 	logger        *slog.Logger
 	posts         *PostModel
-	projects      *ProjectModel
 	templateCache map[string]*template.Template
 }
 
@@ -57,7 +56,6 @@ func main() {
 	app := &application{
 		logger:        logger,
 		posts:         &PostModel{DB: db},
-		projects:      &ProjectModel{DB: db},
 		templateCache: templateCache,
 	}
 
