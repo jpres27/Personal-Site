@@ -33,7 +33,7 @@ func openDB(dsn string) (*sql.DB, error) {
 }
 
 func main() {
-	addr := flag.String("addr", ":3000", "HTTP network address")
+	addr := flag.String("addr", ":4000", "HTTP network address")
 	dsn := flag.String("dsn", "web:pass@/portsite?parseTime=true", "mysql data source name")
 	flag.Parse()
 
