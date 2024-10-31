@@ -6,8 +6,6 @@ import (
 )
 
 type templateData struct {
-	Post  Post
-	Posts []Post
 }
 
 func newTemplateCache() (map[string]*template.Template, error) {
